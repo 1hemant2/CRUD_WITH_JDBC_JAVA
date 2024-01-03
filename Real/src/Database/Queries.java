@@ -23,7 +23,7 @@ public class Queries {
             gpa,
             mobile_number) VALUES(?,?,?,?,?,?,?)
             """;
-    public static String read = "";
+    public static String read = "select * from student";
     public static String update = "";
     public static String delete = "";
 }

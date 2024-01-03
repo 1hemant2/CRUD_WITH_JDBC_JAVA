@@ -1,5 +1,7 @@
+import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -46,7 +48,30 @@ public class App {
                     break;
                 case 2:
                     try {
-
+                        ResultSet rs = Operation.ReadStudent();
+                        ArrayList<ArrayList<Object>> al = new ArrayList<>();
+                        while (rs.next()) {
+                            ArrayList<Object> temp = new ArrayList<>();
+                            temp.add(rs.getInt("student_id"));
+                            temp.add(rs.getString("first_name"));
+                            temp.add(rs.getString("last_name"));
+                            temp.add(rs.getString("date_of_birth"));
+                            temp.add(rs.getString("gender"));
+                            temp.add(rs.getString("email"));
+                            temp.add(rs.getString("gpa"));
+                            temp.add(rs.getString("mobile_number"));
+                            al.add(temp);
+                        }
+                        rs.close();
+                        for (ArrayList<Object> arrayList : al) {
+                            System.out.print("student_id " + arrayList.get(0) + ", ");
+                            System.out.print("name : " + arrayList.get(1) + arrayList.get(2) + ", ");
+                            System.out.print("date of birth : " + arrayList.get(3) + ", ");
+                            System.out.print("gender : " + arrayList.get(4) + ", ");
+                            System.out.print("email : " + arrayList.get(5) + ", ");
+                            System.out.print("gpa : " + arrayList.get(6) + ", ");
+                            System.out.println("mobile number : " + arrayList.get(7) + "| ");
+                        }
                     } catch (Exception e) {
                         System.out.println(e);
                     }
@@ -59,7 +84,6 @@ public class App {
             menu = sc.nextInt();
             sc.nextLine();
         }
-
         sc.close();
 
     }

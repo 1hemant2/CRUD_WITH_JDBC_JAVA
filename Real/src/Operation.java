@@ -2,6 +2,7 @@ import java.sql.Statement;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Operation {
@@ -38,8 +39,17 @@ public class Operation {
         }
     }
 
-    public static void ReadStudent() {
-
+    public static ResultSet ReadStudent() {
+        try {
+            Connection con = Database.Connections.connectToDB();
+            String Query = Database.Queries.read;
+            PreparedStatement ps = con.prepareStatement(Query);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     public void UpdateStudent() {
