@@ -1,4 +1,5 @@
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class App {
         sc.nextLine();
         while (menu >= 1 && menu <= 4) {
             switch (menu) {
+                // create
                 case 1:
                     try {
                         System.out.println("enter firstname");
@@ -46,6 +48,7 @@ public class App {
                         System.err.println(e);
                     }
                     break;
+                // read
                 case 2:
                     try {
                         ResultSet rs = Operation.ReadStudent();
@@ -76,6 +79,23 @@ public class App {
                         System.out.println(e);
                     }
                     break;
+                // update
+                case 3:
+                    try {
+                        System.out.println("enter student id ");
+                        int Student_id = sc.nextInt();
+                        sc.nextLine();
+                        System.out.println("enter column_name");
+                        String columnName = sc.nextLine();
+                        System.out.println("enter data which have to change");
+                        String data = sc.nextLine();
+                        Operation.UpdateStudent(Student_id, columnName, data);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                    break;
+                // delete
+
                 default:
                     break;
             }

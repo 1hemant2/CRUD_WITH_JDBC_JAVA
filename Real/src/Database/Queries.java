@@ -24,6 +24,6 @@ public class Queries {
             mobile_number) VALUES(?,?,?,?,?,?,?)
             """;
     public static String read = "select * from student";
-    public static String update = "";
+    public static String update = "UPDATE student SET %s=? where student_id=?";
     public static String delete = "";
 }

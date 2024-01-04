@@ -52,8 +52,19 @@ public class Operation {
         return null;
     }
 
-    public void UpdateStudent() {
-
+    public static void UpdateStudent(int student_id, String columnName, String data) {
+        try {
+            Connection con = Database.Connections.connectToDB();
+            String UpdateQuires = String.format(Database.Queries.update, columnName);
+            PreparedStatement prst = con.prepareStatement(UpdateQuires);
+            prst.setString(1, data);
+            prst.setInt(2, student_id);
+            prst.executeUpdate();
+            System.out.println("data updated successfully");
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
     public void DeleteStudent() {
