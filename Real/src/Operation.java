@@ -67,7 +67,18 @@ public class Operation {
         }
     }
 
-    public void DeleteStudent() {
+    public static void DeleteStudent(int student_id) {
+        try {
+            Connection con = Database.Connections.connectToDB();
+            String Query = Database.Queries.delete;
+            PreparedStatement prst = con.prepareStatement(Query);
+            prst.setInt(1, student_id);
+            System.err.println("student " + student_id + " deleted successfully");
+            prst.execute();
+            prst.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
 
     }
 }

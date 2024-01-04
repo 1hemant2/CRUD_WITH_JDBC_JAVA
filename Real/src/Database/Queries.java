@@ -25,5 +25,5 @@ public class Queries {
             """;
     public static String read = "select * from student";
     public static String update = "UPDATE student SET %s=? where student_id=?";
-    public static String delete = "";
+    public static String delete = "DELETE FROM student WHERE student_id=?";
 }

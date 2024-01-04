@@ -95,7 +95,14 @@ public class App {
                     }
                     break;
                 // delete
-
+                case 4:
+                    try {
+                        System.out.println("enter student id ");
+                        int student_id = sc.nextInt();
+                        Operation.DeleteStudent(student_id);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
                 default:
                     break;
             }
